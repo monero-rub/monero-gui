@@ -667,8 +667,8 @@ ApplicationWindow {
             // deleting transaction object, we don't want memleaks
             currentWallet.disposeTransaction(transaction);
         } else {
-            console.log("Transaction created, amount: " + walletManager.displayAmount(transaction.amount)
-                    + ", fee: " + walletManager.displayAmount(transaction.fee));
+            console.log("Transaction created, amount: " + walletManager.displayAmount(transaction.amount * 1000000000000.0)
+                    + ", fee: " + walletManager.displayAmount(transaction.fee/1000000000000.0));
 
             // here we show confirmation popup;
             transactionConfirmationPopup.title = qsTr("Please confirm transaction:\n") + translationManager.emptyString;
@@ -783,8 +783,8 @@ ApplicationWindow {
             // deleting transaction object, we don't want memleaks
             currentWallet.disposeTransaction(transaction);
         } else {
-            console.log("Transaction created, amount: " + walletManager.displayAmount(transaction.amount)
-                    + ", fee: " + walletManager.displayAmount(transaction.fee));
+            console.log("Transaction created, amount: " + walletManager.displayAmount(transaction.amount*1000000000000.0)
+                    + ", fee: " + walletManager.displayAmount(transaction.fee/1000000000000.0));
 
             // here we show confirmation popup;
 

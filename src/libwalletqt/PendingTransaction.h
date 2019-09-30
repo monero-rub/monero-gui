@@ -6,7 +6,6 @@
 #include <QVariant>
 
 #include <wallet/api/wallet2_api.h>
-
 //namespace Monero {
 //class PendingTransaction;
 //}

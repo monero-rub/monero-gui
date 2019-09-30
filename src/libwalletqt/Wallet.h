@@ -11,9 +11,7 @@
 #include "PendingTransaction.h" // we need to have an access to the PendingTransaction::Priority enum here;
 #include "UnsignedTransaction.h"
 #include "NetworkType.h"
-#include "boost/multiprecision/cpp_int.hpp"
-#include "boost/numeric/conversion/cast.hpp"
-typedef boost::multiprecision::cpp_int xmc_int;
+#include "xmc_int_to_double.hpp"
 
 namespace Monero {
     class Wallet; // forward declaration
@@ -188,12 +186,12 @@ public:
 
     //! creates transaction
     Q_INVOKABLE PendingTransaction * createTransaction(const QString &dst_addr, const QString &payment_id,
-                                                       double amount, quint32 mixin_count,
+                                                       quint64 amount, quint32 mixin_count,
                                                        PendingTransaction::Priority priority);
 
     //! creates async transaction
     Q_INVOKABLE void createTransactionAsync(const QString &dst_addr, const QString &payment_id,
-                                            double amount, quint32 mixin_count,
+                                            quint64 amount, quint32 mixin_count,
                                             PendingTransaction::Priority priority);
 
     //! creates transaction with all outputs
@@ -260,7 +258,7 @@ public:
     Q_INVOKABLE bool verifySignedMessage(const QString &message, const QString &address, const QString &signature, bool filename = false) const;
 
     //! Parse URI
-    Q_INVOKABLE bool parse_uri(const QString &uri, QString &address, QString &payment_id, double &amount, QString &tx_description, QString &recipient_name, QVector<QString> &unknown_parameters, QString &error);
+    Q_INVOKABLE bool parse_uri(const QString &uri, QString &address, QString &payment_id, quint64 &amount, QString &tx_description, QString &recipient_name, QVector<QString> &unknown_parameters, QString &error);
 
     //! saved payment id
     QString paymentId() const;
@@ -319,9 +317,9 @@ signals:
     // signalling only after we
     void refreshed();
 
-    void moneySpent(const QString &txId, double amount);
-    void moneyReceived(const QString &txId, double amount);
-    void unconfirmedMoneyReceived(const QString &txId, double amount);
+    void moneySpent(const QString &txId, quint64 amount);
+    void moneyReceived(const QString &txId, quint64 amount);
+    void unconfirmedMoneyReceived(const QString &txId, quint64 amount);
     void newBlock(quint64 height, quint64 targetHeight);
     void historyModelChanged() const;
     void walletCreationHeightChanged();

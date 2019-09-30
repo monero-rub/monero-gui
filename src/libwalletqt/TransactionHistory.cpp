@@ -140,7 +140,7 @@ QString TransactionHistory::writeCSV(quint32 accountIndex, QString out)
     {
         // collect column data
         double amount = info->amount();
-        double atomicAmount = info->atomicAmount();
+        quint64 atomicAmount = info->atomicAmount();
         quint32 subaddrAccount = info->subaddrAccount();
         QString fee = info->fee();
         QString direction = QString("");

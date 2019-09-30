@@ -27,7 +27,7 @@ double TransactionInfo::amount() const
     return WalletManager::instance()->displayAmount(m_pimpl->amount()).toDouble();
 }
 
-double TransactionInfo::atomicAmount() const
+quint64 TransactionInfo::atomicAmount() const
 {
     return m_pimpl->amount();
 }

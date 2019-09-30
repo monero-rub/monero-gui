@@ -178,7 +178,7 @@ QString WalletManager::walletLanguage(const QString &locale)
     return "English";
 }
 
-double WalletManager::maximumAllowedAmount() const
+quint64 WalletManager::maximumAllowedAmount() const
 {
     return Monero::Wallet::maximumAllowedAmount();
 }
@@ -188,17 +188,18 @@ QString WalletManager::maximumAllowedAmountAsSting() const
     return WalletManager::displayAmount(WalletManager::maximumAllowedAmount());
 }
 
-QString WalletManager::displayAmount(double amount) const
+QString WalletManager::displayAmount(quint64 amount) const
 {
     return QString::fromStdString(Monero::Wallet::displayAmount(amount));
 }
 
-double WalletManager::amountFromString(const QString &amount) const
+quint64 WalletManager::amountFromString(const QString &amount) const
 {
+    std::cout << "#######----->> amountFromString:" << amount.toStdString()<<std::endl;
     return Monero::Wallet::amountFromString(amount.toStdString());
 }
 
-double WalletManager::amountFromDouble(double amount) const
+quint64 WalletManager::amountFromDouble(double amount) const
 {
     return Monero::Wallet::amountFromDouble(amount);
 }
@@ -294,7 +295,7 @@ QString WalletManager::resolveOpenAlias(const QString &address) const
     res = std::string(dnssec_valid ? "true" : "false") + "|" + res;
     return QString::fromStdString(res);
 }
-bool WalletManager::parse_uri(const QString &uri, QString &address, QString &payment_id, double &amount, QString &tx_description, QString &recipient_name, QVector<QString> &unknown_parameters, QString &error) const
+bool WalletManager::parse_uri(const QString &uri, QString &address, QString &payment_id, quint64 &amount, QString &tx_description, QString &recipient_name, QVector<QString> &unknown_parameters, QString &error) const
 {
     if (m_currentWallet)
         return m_currentWallet->parse_uri(uri, address, payment_id, amount, tx_description, recipient_name, unknown_parameters, error);
@@ -305,7 +306,7 @@ QVariantMap WalletManager::parse_uri_to_object(const QString &uri) const
 {
     QString address;
     QString payment_id;
-    double amount = 0;
+    quint64 amount = 0;
     QString tx_description;
     QString recipient_name;
     QVector<QString> unknown_parameters;

@@ -28,14 +28,14 @@ public:
 
     Status status() const;
     QString errorString() const;
-    Q_INVOKABLE double amount(int index) const;
-    Q_INVOKABLE double fee(int index) const;
-    Q_INVOKABLE double mixin(int index) const;
+    Q_INVOKABLE quint64 amount(int index) const;
+    Q_INVOKABLE quint64 fee(int index) const;
+    Q_INVOKABLE quint64 mixin(int index) const;
     QStringList recipientAddress() const;
     QStringList paymentId() const;
     quint64 txCount() const;
     QString confirmationMessage() const;
-    double minMixinCount() const;
+    quint64 minMixinCount() const;
     Q_INVOKABLE bool sign(const QString &fileName) const;
     Q_INVOKABLE void setFilename(const QString &fileName);
 

@@ -99,12 +99,12 @@ public:
 
 
     //! since we can't call static method from QML, move it to this class
-    Q_INVOKABLE QString displayAmount(double amount) const;
+    Q_INVOKABLE QString displayAmount(quint64 amount) const;
     //Q_INVOKABLE QString displayAmount(xmc_int amount) const;
-    Q_INVOKABLE double amountFromString(const QString &amount) const;
-    Q_INVOKABLE double amountFromDouble(double amount) const;
+    Q_INVOKABLE quint64 amountFromString(const QString &amount) const;
+    Q_INVOKABLE quint64 amountFromDouble(double amount) const;
     //Q_INVOKABLE xmc_int maximumAllowedAmount() const;
-    Q_INVOKABLE double maximumAllowedAmount() const;
+    Q_INVOKABLE quint64 maximumAllowedAmount() const;
 
     // QML JS engine doesn't support unsigned integers
     Q_INVOKABLE QString maximumAllowedAmountAsSting() const;
@@ -139,15 +139,13 @@ public:
     Q_INVOKABLE quint64 sub(quint64 x, quint64 y) const { return x - y; }
     Q_INVOKABLE qint64 addi(qint64 x, qint64 y) const { return x + y; }
     Q_INVOKABLE qint64 subi(qint64 x, qint64 y) const { return x - y; }
-    Q_INVOKABLE double add(double x, double y) const { return x + y; }
-    Q_INVOKABLE double sub(double x, double y) const { return x - y; }
  
 #ifndef DISABLE_PASS_STRENGTH_METER
     Q_INVOKABLE double getPasswordStrength(const QString &password) const;
 #endif
 
     Q_INVOKABLE QString resolveOpenAlias(const QString &address) const;
-    Q_INVOKABLE bool parse_uri(const QString &uri, QString &address, QString &payment_id, double &amount, QString &tx_description, QString &recipient_name, QVector<QString> &unknown_parameters, QString &error) const;
+    Q_INVOKABLE bool parse_uri(const QString &uri, QString &address, QString &payment_id, quint64 &amount, QString &tx_description, QString &recipient_name, QVector<QString> &unknown_parameters, QString &error) const;
     Q_INVOKABLE QVariantMap parse_uri_to_object(const QString &uri) const;
     Q_INVOKABLE bool saveQrCode(const QString &, const QString &) const;
     Q_INVOKABLE void checkUpdatesAsync(const QString &software, const QString &subdir) const;

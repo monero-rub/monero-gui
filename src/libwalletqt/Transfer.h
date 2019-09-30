@@ -7,16 +7,16 @@
 class Transfer : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(double amount READ amount)
+    Q_PROPERTY(quint64 amount READ amount)
     Q_PROPERTY(QString address READ address)
 private:
-    explicit Transfer(double _amount, const QString &_address,  QObject *parent = 0): QObject(parent), m_amount(_amount), m_address(_address) {};
+    explicit Transfer(quint64 _amount, const QString &_address,  QObject *parent = 0): QObject(parent), m_amount(_amount), m_address(_address) {};
 private:
     friend class TransactionInfo;
-    double m_amount;
+    quint64 m_amount;
     QString m_address;
 public:
-    double amount() const { return m_amount; }
+    quint64 amount() const { return m_amount; }
     QString address() const { return m_address; }
 
 };

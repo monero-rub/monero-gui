@@ -1,5 +1,5 @@
 #include "PendingTransaction.h"
-
+#include "xmc_int_to_double.hpp"
 
 PendingTransaction::Status PendingTransaction::status() const
 {
@@ -21,17 +21,17 @@ bool PendingTransaction::commit()
 
 double PendingTransaction::amount() const
 {
-    return m_pimpl->amount();
+    return xmc_int_to_double(m_pimpl->amount());
 }
 
 double PendingTransaction::dust() const
 {
-    return m_pimpl->dust();
+    return xmc_int_to_double(m_pimpl->dust());
 }
 
 double PendingTransaction::fee() const
 {
-    return m_pimpl->fee();
+    return xmc_int_to_double(m_pimpl->fee());
 }
 
 

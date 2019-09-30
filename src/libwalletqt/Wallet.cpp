@@ -38,20 +38,20 @@ public:
 
     }
 
-    virtual void moneySpent(const std::string &txId, double amount)
+    virtual void moneySpent(const std::string &txId, quint64 amount)
     {
         qDebug() << __FUNCTION__;
         emit m_wallet->moneySpent(QString::fromStdString(txId), amount);
     }
 
 
-    virtual void moneyReceived(const std::string &txId, double amount)
+    virtual void moneyReceived(const std::string &txId, quint64 amount)
     {
         qDebug() << __FUNCTION__;
         emit m_wallet->moneyReceived(QString::fromStdString(txId), amount);
     }
 
-    virtual void unconfirmedMoneyReceived(const std::string &txId, double amount)
+    virtual void unconfirmedMoneyReceived(const std::string &txId, quint64 amount)
     {
         qDebug() << __FUNCTION__;
         emit m_wallet->unconfirmedMoneyReceived(QString::fromStdString(txId), amount);
@@ -253,22 +253,26 @@ bool Wallet::viewOnly() const
 
 double Wallet::balance(quint32 accountIndex) const
 {
-    return m_walletImpl->balance(accountIndex);
+    //return xmc_int_to_double(m_walletImpl->balance(accountIndex));
+    return boost::numeric_cast<double>(m_walletImpl->balance(accountIndex));
 }
 
 double Wallet::balanceAll() const
 {
-    return m_walletImpl->balanceAll();
+    return boost::numeric_cast<double>(m_walletImpl->balanceAll());
+    //return xmc_int_to_double(m_walletImpl->balanceAll());
 }
 
 double Wallet::unlockedBalance(quint32 accountIndex) const
 {
-    return m_walletImpl->unlockedBalance(accountIndex);
+    return boost::numeric_cast<double>(m_walletImpl->unlockedBalance(accountIndex));
+    //return xmc_int_to_double(m_walletImpl->unlockedBalance(accountIndex));
 }
 
 double Wallet::unlockedBalanceAll() const
 {
-    return m_walletImpl->unlockedBalanceAll();
+    return boost::numeric_cast<double>(m_walletImpl->unlockedBalanceAll());
+    //return xmc_int_to_double(m_walletImpl->unlockedBalanceAll());
 }
 
 quint32 Wallet::currentSubaddressAccount() const
@@ -392,7 +396,7 @@ void Wallet::pauseRefresh() const
 }
 
 PendingTransaction *Wallet::createTransaction(const QString &dst_addr, const QString &payment_id,
-                                              double amount, quint32 mixin_count,
+                                              quint64 amount, quint32 mixin_count,
                                               PendingTransaction::Priority priority)
 {
     std::set<uint32_t> subaddr_indices;
@@ -404,7 +408,7 @@ PendingTransaction *Wallet::createTransaction(const QString &dst_addr, const QSt
 }
 
 void Wallet::createTransactionAsync(const QString &dst_addr, const QString &payment_id,
-                               double amount, quint32 mixin_count,
+                               quint64 amount, quint32 mixin_count,
                                PendingTransaction::Priority priority)
 {
     QFuture<PendingTransaction*> future = QtConcurrent::run(this, &Wallet::createTransaction,
@@ -425,7 +429,7 @@ PendingTransaction *Wallet::createTransactionAll(const QString &dst_addr, const 
 {
     std::set<uint32_t> subaddr_indices;
     Monero::PendingTransaction * ptImpl = m_walletImpl->createTransaction(
-                dst_addr.toStdString(), payment_id.toStdString(), Monero::optional<double>(), mixin_count,
+                dst_addr.toStdString(), payment_id.toStdString(), Monero::optional<quint64>(), mixin_count,
                 static_cast<Monero::PendingTransaction::Priority>(priority), currentSubaddressAccount(), subaddr_indices);
     PendingTransaction * result = new PendingTransaction(ptImpl, this);
     return result;
@@ -711,7 +715,7 @@ bool Wallet::verifySignedMessage(const QString &message, const QString &address,
     return m_walletImpl->verifySignedMessage(message.toStdString(), address.toStdString(), signature.toStdString());
   }
 }
-bool Wallet::parse_uri(const QString &uri, QString &address, QString &payment_id, double &amount, QString &tx_description, QString &recipient_name, QVector<QString> &unknown_parameters, QString &error)
+bool Wallet::parse_uri(const QString &uri, QString &address, QString &payment_id, quint64 &amount, QString &tx_description, QString &recipient_name, QVector<QString> &unknown_parameters, QString &error)
 {
    std::string s_address, s_payment_id, s_tx_description, s_recipient_name, s_error;
    std::vector<std::string> s_unknown_parameters;
