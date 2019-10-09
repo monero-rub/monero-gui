@@ -48,7 +48,7 @@ Rectangle {
     color: "transparent"
     property int mixin: 10  // (ring size 11)
     property string warningContent: ""
-    property string startLinkText: qsTr("<style type='text/css'>a {text-decoration: none; color: #FF6C3C; font-size: 14px;}</style><font size='2'> (</font><a href='#'>Start daemon</a><font size='2'>)</font>") + translationManager.emptyString
+    property string startLinkText: qsTr("<style type='text/css'>a {text-decoration: none; color: #6C3CFF; font-size: 14px;}</style><font size='2'> (</font><a href='#'>Start daemon</a><font size='2'>)</font>") + translationManager.emptyString
     property bool showAdvanced: false
 
     Clipboard { id: clipboard }
@@ -193,8 +193,8 @@ Rectangle {
                   Layout.fillWidth: true
                   id: priorityDropdown
                   Layout.topMargin: 5 * scaleRatio
-                  shadowReleasedColor: "#FF4304"
-                  shadowPressedColor: "#B32D00"
+                  shadowReleasedColor: "#4304FF"
+                  shadowPressedColor: "#2D00B3"
                   releasedColor: "#363636"
                   pressedColor: "#202020"
                   currentIndex: 0

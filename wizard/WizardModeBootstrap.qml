@@ -117,8 +117,8 @@ Rectangle {
                             id: regionDropdown
                             Layout.fillWidth: true
                             dataModel: regionModel
-                            shadowReleasedColor: "#FF4304"
-                            shadowPressedColor: "#B32D00"
+                            shadowReleasedColor: "#4304FF"
+                            shadowPressedColor: "#2D00B3"
                             releasedColor: "#363636"
                             pressedColor: "#202020"
                             currentIndex: 0

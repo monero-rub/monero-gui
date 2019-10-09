@@ -190,7 +190,7 @@ Item {
                         font.family: MoneroComponents.Style.fontRegular.name
                         font.bold: true
                         font.pixelSize: fontItemSize
-                        color: itemArea.containsMouse || index === columnid.currentIndex || itemArea.containsMouse ? "#FA6800" : "#FFFFFF"
+                        color: itemArea.containsMouse || index === columnid.currentIndex || itemArea.containsMouse ? "#6800AF" : "#FFFFFF"
                         text: qsTr(column1) + translationManager.emptyString
                     }
 

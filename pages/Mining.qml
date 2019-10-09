@@ -62,7 +62,7 @@ Rectangle {
         MoneroComponents.Label {
             id: soloSyncedLabel
             fontSize: 18 * scaleRatio
-            color: "#D02020"
+            color: "#2020d0"
             text: qsTr("Your daemon must be synchronized before you can start mining") + translationManager.emptyString
             visible: walletManager.isDaemonLocal(appWindow.currentDaemonAddress) && !appWindow.daemonSynced
         }

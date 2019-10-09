@@ -39,9 +39,9 @@ Item {
 
     property bool small: false
     property string shadowPressedColor: "#B32D00"
-    property string shadowReleasedColor: "#FF4304"
-    property string pressedColor: "#FF4304"
-    property string releasedColor: "#FF6C3C"
+    property string shadowReleasedColor: "#4304FF"
+    property string pressedColor: "#4304FF"
+    property string releasedColor: "#6C3CFF"
     property string icon: ""
     property string textColor: "#FFFFFF"
     property int fontSize: small ? 14 * scaleRatio : 16 * scaleRatio

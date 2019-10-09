@@ -133,7 +133,7 @@ Rectangle {
                     anchors.leftMargin: 192
                     font.bold: true
                     font.pixelSize: 12
-                    color: "#f33434"
+                    color: "#3434f3"
                 }
 
                 Text {
@@ -146,7 +146,7 @@ Rectangle {
                     anchors.rightMargin: 8
                     font.pixelSize: 12
                     font.bold: true
-                    color: "#ff9323"
+                    color: "#9323ff"
                 }
 
                 Rectangle {
@@ -365,7 +365,7 @@ Rectangle {
                 anchors.right: parent.right
                 text: qsTr("Send") + translationManager.emptyString
                 symbol: qsTr("S") + translationManager.emptyString
-                dotColor: "#FF6C3C"
+                dotColor: "#6c3cff"
                 onClicked: {
                     parent.previousButton.checked = false
                     parent.previousButton = transferButton
@@ -390,7 +390,7 @@ Rectangle {
                 anchors.right: parent.right
                 text: qsTr("Address book") + translationManager.emptyString
                 symbol: qsTr("B") + translationManager.emptyString
-                dotColor: "#FF4F41"
+                dotColor: "#4f41ff"
                 under: transferButton
                 onClicked: {
                     parent.previousButton.checked = false
@@ -440,7 +440,7 @@ Rectangle {
                 anchors.right: parent.right
                 text: qsTr("Merchant") + translationManager.emptyString
                 symbol: qsTr("U") + translationManager.emptyString
-                dotColor: "#FF4F41"
+                dotColor: "#4f41ff"
                 under: receiveButton
                 onClicked: {
                     parent.previousButton.checked = false

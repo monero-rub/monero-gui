@@ -134,7 +134,7 @@ ColumnLayout {
                 property int maxWidth: bar.width * scaleRatio
                 width: (maxWidth * root.passwordFill) / 100
                 radius: 8
-                color: "#FA6800"
+                color: "#6800FA"
             }
 
             Rectangle {

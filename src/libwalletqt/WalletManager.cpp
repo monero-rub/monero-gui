@@ -124,6 +124,7 @@ QString WalletManager::closeWallet()
     QMutexLocker locker(&m_mutex);
     QString result;
     if (m_currentWallet) {
+	qCritical() << "** TRYING TO CLOSE WALLET !";
         result = m_currentWallet->address(0, 0);
         delete m_currentWallet;
     } else {
