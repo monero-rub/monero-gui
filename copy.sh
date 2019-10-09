@@ -24,3 +24,5 @@ cp /mingw64/bin/Qt5Qml.dll .
 cp /mingw64/bin/Qt5Network.dll .
 cp /mingw64/bin/Qt5Quick.dll .
 cp /mingw64/bin/Qt5Widgets.dll .
+cp /mingw64/bin/libicuio64.dll .
+cp /mingw64/bin/libicutu64.dll .
