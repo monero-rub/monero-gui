@@ -56,7 +56,7 @@ Rectangle {
         anchors.top: parent.top
         anchors.right: parent.right
         anchors.margins: (isMobile)? 17 * scaleRatio : 40 * scaleRatio
-        anchors.topMargin: 32* scaleRatio
+        anchors.topMargin: 36 * scaleRatio
         spacing: 16 * scaleRatio
 
         MoneroComponents.CheckBox {

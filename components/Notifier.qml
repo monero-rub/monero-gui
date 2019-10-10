@@ -41,7 +41,7 @@ Item {
     y: parent.height - height * scale.yScale - margin * scale.yScale
 
     Rectangle {
-        color: "#6C3CFF"
+        color: "#8D52B2"
         border.color: "black"
         anchors.fill: parent
 

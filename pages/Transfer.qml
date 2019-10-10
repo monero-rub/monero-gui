@@ -48,7 +48,7 @@ Rectangle {
     color: "transparent"
     property int mixin: 10  // (ring size 11)
     property string warningContent: ""
-    property string startLinkText: qsTr("<style type='text/css'>a {text-decoration: none; color: #6C3CFF; font-size: 14px;}</style><font size='2'> (</font><a href='#'>Start daemon</a><font size='2'>)</font>") + translationManager.emptyString
+    property string startLinkText: qsTr("<style type='text/css'>a {text-decoration: none; color: #8D52B2; font-size: 14px;}</style><font size='2'> (</font><a href='#'>Start daemon</a><font size='2'>)</font>") + translationManager.emptyString
     property bool showAdvanced: false
 
     Clipboard { id: clipboard }
@@ -193,8 +193,8 @@ Rectangle {
                   Layout.fillWidth: true
                   id: priorityDropdown
                   Layout.topMargin: 5 * scaleRatio
-                  shadowReleasedColor: "#4304FF"
-                  shadowPressedColor: "#2D00B3"
+                  shadowReleasedColor: "#8D52B2"
+                  shadowPressedColor: "#8D52B2"
                   releasedColor: "#363636"
                   pressedColor: "#202020"
                   currentIndex: 0
@@ -313,9 +313,9 @@ Rectangle {
               //fontSize: paymentIdLine.labelFontSize
               iconOnTheLeft: false
               Layout.fillWidth: true
-              //text: qsTr("Payment ID <font size='2'>( Optional )</font>") + translationManager.emptyString
-              text: qsTr("<style type='text/css'>a {text-decoration: none; color: #858585; font-size: 12px;}</style>\
-                Payment ID <font size='1'>  ( </font> <a> Optional </a><font size='1'> )</font>")
+              text: qsTr("Payment ID <font size='2'>( Optional )</font>") + translationManager.emptyString
+              //text: qsTr("<style type='text/css'>a {text-decoration: none; color: #858585; font-size: 12px;}</style>\
+              //  Payment ID <font size='1'>  ( </font> <a> Optional </a><font size='1'> )</font>")
               onClicked: {
                   if (!paymentIdCheckbox.checked) {
                     paymentIdLine.text = "";

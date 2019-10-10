@@ -179,9 +179,9 @@ Rectangle {
 
         Rectangle { height: 4; width: parent.width / 5; color: "#FFE00A" }
         Rectangle { height: 4; width: parent.width / 5; color: "#6B0072" }
-        Rectangle { height: 4; width: parent.width / 5; color: "#6C3CFF" }
+        Rectangle { height: 4; width: parent.width / 5; color: "#8D52B2" }
         Rectangle { height: 4; width: parent.width / 5; color: "#FFD781" }
-        Rectangle { height: 4; width: parent.width / 5; color: "#4F41FF" }
+        Rectangle { height: 4; width: parent.width / 5; color: "#8D52B2" }
     }
 
     ColumnLayout {

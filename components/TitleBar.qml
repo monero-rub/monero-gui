@@ -84,7 +84,7 @@ Rectangle {
             visible: titleBar.orange
             width: parent.width
             height: parent.height
-            color: "#6600ff"
+            color: "#8D52B2"
         }
     }
 

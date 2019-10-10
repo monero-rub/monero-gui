@@ -86,7 +86,7 @@ RowLayout {
                 ColorOverlay {
                     anchors.fill: indicatorImage
                     source: indicatorImage
-                    color: "#0000FF"
+                    color: "#8D52B2"
                     visible: darkDropIndicator
                 }
             }

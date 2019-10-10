@@ -273,7 +273,7 @@ Item {
                     font.pixelSize: 12 * scaleRatio
                     font.bold: false
                     color: "white"
-                    text: "<style type='text/css'>a {text-decoration: none; color: #6C3CFF; font-size: 12px;}</style>Currently selected address: " + addressLabel + " <a href='#'>(Change)</a>"
+                    text: "<style type='text/css'>a {text-decoration: none; color: #8D52B2; font-size: 12px;}</style>Currently selected address: " + addressLabel + " <a href='#'>(Change)</a>"
                     textFormat: Text.RichText
 
                     MouseArea {

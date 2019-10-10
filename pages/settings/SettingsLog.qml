@@ -102,7 +102,7 @@ Rectangle {
                 }
                 Layout.fillWidth: true
                 Layout.preferredWidth: logColumn.width
-                shadowReleasedColor: "#4304FF"
+                shadowReleasedColor: "#8D52B2"
                 shadowPressedColor: "#2D00B3"
                 releasedColor: "#363636"
                 pressedColor: "#202020"
