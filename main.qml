@@ -278,19 +278,23 @@ ApplicationWindow {
 
         // Disconnect all listeners
         if (typeof currentWallet !== "undefined" && currentWallet !== null) {
-            currentWallet.refreshed.disconnect(onWalletRefresh)
-            currentWallet.updated.disconnect(onWalletUpdate)
-            currentWallet.newBlock.disconnect(onWalletNewBlock)
-            currentWallet.moneySpent.disconnect(onWalletMoneySent)
-            currentWallet.moneyReceived.disconnect(onWalletMoneyReceived)
-            currentWallet.unconfirmedMoneyReceived.disconnect(onWalletUnconfirmedMoneyReceived)
-            currentWallet.transactionCreated.disconnect(onTransactionCreated)
-            currentWallet.connectionStatusChanged.disconnect(onWalletConnectionStatusChanged)
-            middlePanel.paymentClicked.disconnect(handlePayment);
-            middlePanel.sweepUnmixableClicked.disconnect(handleSweepUnmixable);
-            middlePanel.getProofClicked.disconnect(handleGetProof);
-            middlePanel.checkProofClicked.disconnect(handleCheckProof);
+	    if(callback) {
+		callback();
+	    }
+	    return;
         }
+        currentWallet.refreshed.disconnect(onWalletRefresh)
+        currentWallet.updated.disconnect(onWalletUpdate)
+        currentWallet.newBlock.disconnect(onWalletNewBlock)
+        currentWallet.moneySpent.disconnect(onWalletMoneySent)
+        currentWallet.moneyReceived.disconnect(onWalletMoneyReceived)
+        currentWallet.unconfirmedMoneyReceived.disconnect(onWalletUnconfirmedMoneyReceived)
+        currentWallet.transactionCreated.disconnect(onTransactionCreated)
+        currentWallet.connectionStatusChanged.disconnect(onWalletConnectionStatusChanged)
+        middlePanel.paymentClicked.disconnect(handlePayment);
+        middlePanel.sweepUnmixableClicked.disconnect(handleSweepUnmixable);
+        middlePanel.getProofClicked.disconnect(handleGetProof);
+        middlePanel.checkProofClicked.disconnect(handleCheckProof);
 
         currentWallet = undefined;
         //walletManager.closeWallet();
@@ -986,7 +990,7 @@ ApplicationWindow {
         simpleModeConnectionTimer.running = false;
 	*/
 	closeWallet(function() {
-		currentWallet = undefined;
+		//currentWallet = undefined;
 		wizard.restart();
 		wizard.wizardState = "wizardHome";
 		rootItem.state = "wizard"
