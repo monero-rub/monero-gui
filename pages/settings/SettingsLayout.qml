@@ -55,9 +55,9 @@ Rectangle {
         anchors.left: parent.left
         anchors.top: parent.top
         anchors.right: parent.right
-        anchors.margins: (isMobile)? 17 * scaleRatio : 20 * scaleRatio
-        anchors.topMargin: 0
-        spacing: 6 * scaleRatio
+        anchors.margins: (isMobile)? 17 * scaleRatio : 40 * scaleRatio
+        anchors.topMargin: 32* scaleRatio
+        spacing: 16 * scaleRatio
 
         MoneroComponents.CheckBox {
             visible: !isMobile
@@ -91,6 +91,7 @@ Rectangle {
         MoneroComponents.CheckBox {
             visible: !isMobile
             id: userInActivityCheckbox
+            Layout.topMargin: 32 * scaleRatio
             checked: persistentSettings.lockOnUserInActivity
             onClicked: persistentSettings.lockOnUserInActivity = !persistentSettings.lockOnUserInActivity
             text: qsTr("Lock wallet on inactivity") + translationManager.emptyString
@@ -99,9 +100,9 @@ Rectangle {
         ColumnLayout {
             visible: userInActivityCheckbox.checked
             Layout.fillWidth: true
-            Layout.topMargin: 6 * scaleRatio
+            Layout.topMargin: 16 * scaleRatio
             Layout.leftMargin: 42 * scaleRatio
-            spacing: 0
+            spacing: 4 * scaleRatio
 
             MoneroComponents.TextBlock {
                 font.pixelSize: 14 * scaleRatio

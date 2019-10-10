@@ -304,14 +304,18 @@ Rectangle {
           visible: appWindow.persistentSettings.showPid || paymentIdCheckbox.checked 
 
           CheckBox {
+                  Layout.topMargin: 12 * scaleRatio
+                  fontSize: 14 * scaleRatio
               id: paymentIdCheckbox
               border: false
               checkedIcon: "qrc:///images/minus-white.png"
               uncheckedIcon: "qrc:///images/plus-white.png"
-              fontSize: paymentIdLine.labelFontSize
+              //fontSize: paymentIdLine.labelFontSize
               iconOnTheLeft: false
               Layout.fillWidth: true
-              text: qsTr("Payment ID <font size='2'>( Optional )</font>") + translationManager.emptyString
+              //text: qsTr("Payment ID <font size='2'>( Optional )</font>") + translationManager.emptyString
+              text: qsTr("<style type='text/css'>a {text-decoration: none; color: #858585; font-size: 12px;}</style>\
+                Payment ID <font size='1'>  ( </font> <a> Optional </a><font size='1'> )</font>")
               onClicked: {
                   if (!paymentIdCheckbox.checked) {
                     paymentIdLine.text = "";
@@ -333,11 +337,13 @@ Rectangle {
 
       ColumnLayout {
         CheckBox {
+                  Layout.topMargin: 12 * scaleRatio
+                  fontSize: 14 * scaleRatio
               id: descriptionCheckbox
               border: false
               checkedIcon: "qrc:///images/minus-white.png"
               uncheckedIcon: "qrc:///images/plus-white.png"
-              fontSize: descriptionLine.labelFontSize
+              //fontSize: descriptionLine.labelFontSize
               iconOnTheLeft: false
               Layout.fillWidth: true
               text: qsTr("Description <font size='2'>( Optional )</font>") + translationManager.emptyString
