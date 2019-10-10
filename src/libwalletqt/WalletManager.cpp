@@ -62,6 +62,7 @@ Wallet *WalletManager::openWallet(const QString &path, const QString &password, 
 
 void WalletManager::openWalletAsync(const QString &path, const QString &password, NetworkType::Type nettype, quint64 kdfRounds)
 {
+    /*
     QFuture<Wallet*> future = QtConcurrent::run(this, &WalletManager::openWallet,
                                         path, password, nettype, kdfRounds);
     QFutureWatcher<Wallet*> * watcher = new QFutureWatcher<Wallet*>();
@@ -71,8 +72,11 @@ void WalletManager::openWalletAsync(const QString &path, const QString &password
         QFuture<Wallet*> future = watcher->future();
         watcher->deleteLater();
         emit walletOpened(future.result());
+    */
+    m_scheduler.run([this, path, password, nettype, kdfRounds] {
+	emit walletOpened(openWallet(path, password, nettype, kdfRounds));
     });
-    watcher->setFuture(future);
+    //watcher->setFuture(future);
 }
 
 
@@ -134,8 +138,9 @@ QString WalletManager::closeWallet()
     return result;
 }
 
-void WalletManager::closeWalletAsync()
+void WalletManager::closeWalletAsync(const QJSValue& callback)
 {
+    /*
     QFuture<QString> future = QtConcurrent::run(this, &WalletManager::closeWallet);
     QFutureWatcher<QString> * watcher = new QFutureWatcher<QString>();
 
@@ -144,8 +149,11 @@ void WalletManager::closeWalletAsync()
        QFuture<QString> future = watcher->future();
        watcher->deleteLater();
        emit walletClosed(future.result());
-    });
-    watcher->setFuture(future);
+    */
+    m_scheduler.run([this]{
+	return QJSValueList({closeWallet()});
+    }, callback);
+    //watcher->setFuture(future);
 }
 
 bool WalletManager::walletExists(const QString &path) const
@@ -415,7 +423,13 @@ bool WalletManager::clearWalletCache(const QString &wallet_path) const
     return walletCache.rename(newFileName);
 }
 
-WalletManager::WalletManager(QObject *parent) : QObject(parent)
+WalletManager::WalletManager(QObject *parent)
+	: QObject(parent)
+	, m_scheduler(this)
 {
     m_pimpl =  Monero::WalletManagerFactory::getWalletManager();
+}
+WalletManager::~WalletManager()
+{
+	m_scheduler.shutdownWaitForFinished();
 }

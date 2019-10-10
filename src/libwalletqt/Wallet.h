@@ -12,6 +12,7 @@
 #include "UnsignedTransaction.h"
 #include "NetworkType.h"
 #include "xmc_int_to_double.hpp"
+#include "FutureScheduler.h"
 
 namespace Monero {
     class Wallet; // forward declaration
@@ -366,6 +367,7 @@ private:
     QString m_daemonUsername;
     QString m_daemonPassword;
     Monero::WalletListener *m_walletListener;
+    FutureScheduler m_scheduler;
 };
 
 

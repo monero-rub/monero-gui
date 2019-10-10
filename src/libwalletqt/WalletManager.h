@@ -8,6 +8,7 @@
 #include <QMutex>
 #include <QPointer>
 #include "NetworkType.h"
+#include "FutureScheduler.h"
 
 class Wallet;
 namespace Monero {
@@ -79,7 +80,7 @@ public:
     /*!
      * \brief closeWalletAsync - asynchronous version of "closeWallet"
      */
-    Q_INVOKABLE void closeWalletAsync();
+    Q_INVOKABLE void closeWalletAsync(const QJSValue& callback);
 
     //! checks is given filename is a wallet;
     Q_INVOKABLE bool walletExists(const QString &path) const;
@@ -164,10 +165,12 @@ public slots:
 private:
 
     explicit WalletManager(QObject *parent = 0);
+    ~WalletManager();
     static WalletManager * m_instance;
     Monero::WalletManager * m_pimpl;
     QMutex m_mutex;
     QPointer<Wallet> m_currentWallet;
+    FutureScheduler m_scheduler;
 
 };
 

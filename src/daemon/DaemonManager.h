@@ -6,6 +6,7 @@
 #include <QProcess>
 #include <QVariantMap>
 #include "NetworkType.h"
+#include "FutureScheduler.h"
 
 class DaemonManager : public QObject
 {
@@ -43,6 +44,7 @@ public slots:
 
 private:
     explicit DaemonManager(QObject *parent = 0);
+    ~DaemonManager();
     static DaemonManager * m_instance;
     static QStringList m_clArgs;
     QProcess *m_daemon;
@@ -50,6 +52,8 @@ private:
     QString m_monerod;
     bool m_has_daemon = true;
     bool m_app_exit = false;
+
+    FutureScheduler m_scheduler;
 
 };
 

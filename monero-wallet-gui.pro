@@ -53,6 +53,7 @@ HEADERS += \
     src/model/SubaddressAccountModel.h \
     src/libwalletqt/SubaddressAccount.h \
     src/zxcvbn-c/zxcvbn.h \
+    src/libwalletqt/FutureScheduler.h \
     src/libwalletqt/UnsignedTransaction.h \
     Logger.h \
     MainApp.h
@@ -81,6 +82,7 @@ SOURCES += main.cpp \
     src/model/SubaddressAccountModel.cpp \
     src/libwalletqt/SubaddressAccount.cpp \
     src/zxcvbn-c/zxcvbn.c \
+    src/libwalletqt/FutureScheduler.cpp \
     src/libwalletqt/UnsignedTransaction.cpp \
     Logger.cpp \
     MainApp.cpp

@@ -274,7 +274,7 @@ ApplicationWindow {
         titleBar.visible = persistentSettings.customDecorations;
     }
 
-    function closeWallet() {
+    function closeWallet(callback) {
 
         // Disconnect all listeners
         if (typeof currentWallet !== "undefined" && currentWallet !== null) {
@@ -293,7 +293,17 @@ ApplicationWindow {
         }
 
         currentWallet = undefined;
-        walletManager.closeWallet();
+        //walletManager.closeWallet();
+        appWindow.showProcessingSplash(qsTr("Closing wallet ..."));
+	if(callback) {
+		walletManager.closeWalletAsync(function() {
+			hideProcessingSplash();
+			callback();
+		});
+	} else {
+		walletManager.closeWallet();
+		hideProcessingSplash();
+	}
 
     }
 
@@ -963,6 +973,7 @@ ApplicationWindow {
     function showWizard(){
         clearMoneroCardLabelText();
         walletInitialized = false;
+	/*
         closeWallet();
         currentWallet = undefined;
         wizard.restart();
@@ -973,6 +984,19 @@ ApplicationWindow {
         // disable timers
         userInActivityTimer.running = false;
         simpleModeConnectionTimer.running = false;
+	*/
+	closeWallet(function() {
+		currentWallet = undefined;
+		wizard.restart();
+		wizard.wizardState = "wizardHome";
+		rootItem.state = "wizard"
+	        // reset balance
+        	leftPanel.balanceText = leftPanel.unlockedBalanceText = walletManager.displayAmount(0);
+		fiatApiUpdateBalance(0,0);
+	        // disable timers
+        	userInActivityTimer.running = false;
+        	simpleModeConnectionTimer.running = false;
+	});
     }
 
     function hideMenu() {
@@ -1892,8 +1916,9 @@ ApplicationWindow {
         console.log("close accepted");
         // Close wallet non async on exit
         daemonManager.exit();
-        walletManager.closeWallet();
-        Qt.quit();
+        //walletManager.closeWallet();
+        //Qt.quit();
+	closeWallet(Qt.quit);
     }
 
     function onWalletCheckUpdatesComplete(update) {

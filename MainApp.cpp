@@ -10,5 +10,6 @@ bool MainApp::event (QEvent *event)
         return true;
     }
 
-    return false;
+    //return false;
+    return QApplication::event(event);
 }

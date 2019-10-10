@@ -112,6 +112,7 @@ NetworkType::Type Wallet::nettype() const
 
 void Wallet::updateConnectionStatusAsync()
 {
+    /*
     QFuture<Monero::Wallet::ConnectionStatus> future = QtConcurrent::run(m_walletImpl, &Monero::Wallet::connected);
     QFutureWatcher<Monero::Wallet::ConnectionStatus> *connectionWatcher = new QFutureWatcher<Monero::Wallet::ConnectionStatus>();
 
@@ -119,6 +120,9 @@ void Wallet::updateConnectionStatusAsync()
         QFuture<Monero::Wallet::ConnectionStatus> future = connectionWatcher->future();
         connectionWatcher->deleteLater();
         ConnectionStatus newStatus = static_cast<ConnectionStatus>(future.result());
+    */
+    m_scheduler.run([this] {
+	ConnectionStatus newStatus = static_cast<ConnectionStatus>(m_walletImpl->connected());	
         if (newStatus != m_connectionStatus || !m_initialized) {
             m_initialized = true;
             m_connectionStatus = newStatus;
@@ -128,7 +132,7 @@ void Wallet::updateConnectionStatusAsync()
         // Release lock
         m_connectionStatusRunning = false;
     });
-    connectionWatcher->setFuture(future);
+    //connectionWatcher->setFuture(future);
 }
 
 Wallet::ConnectionStatus Wallet::connected(bool forceCheck)
@@ -208,6 +212,7 @@ void Wallet::initAsync(const QString &daemonAddress, quint64 upperTransactionLim
         emit connectionStatusChanged(m_connectionStatus);
     }
 
+    /*
     QFuture<bool> future = QtConcurrent::run(this, &Wallet::init,
                                   daemonAddress, upperTransactionLimit, isRecovering, isRecoveringFromDevice, restoreHeight);
     QFutureWatcher<bool> * watcher = new QFutureWatcher<bool>();
@@ -217,6 +222,11 @@ void Wallet::initAsync(const QString &daemonAddress, quint64 upperTransactionLim
         QFuture<bool> future = watcher->future();
         watcher->deleteLater();
         if(future.result()){
+    */
+    m_scheduler.run([this, daemonAddress, upperTransactionLimit, isRecovering, isRecoveringFromDevice, restoreHeight] {
+	bool success = init(daemonAddress, upperTransactionLimit, isRecovering, isRecoveringFromDevice, restoreHeight);
+	if(success)
+	{
             emit walletCreationHeightChanged();
             qDebug() << "init async finished - starting refresh";
             connected(true);
@@ -224,7 +234,7 @@ void Wallet::initAsync(const QString &daemonAddress, quint64 upperTransactionLim
 
         }
     });
-    watcher->setFuture(future);
+    //watcher->setFuture(future);
 }
 
 //! create a view only wallet
@@ -887,6 +897,7 @@ Wallet::Wallet(Monero::Wallet *w, QObject *parent)
     , m_daemonBlockChainTargetHeightTtl(DAEMON_BLOCKCHAIN_TARGET_HEIGHT_CACHE_TTL_SECONDS)
     , m_connectionStatusTtl(WALLET_CONNECTION_STATUS_CACHE_TTL_SECONDS)
     , m_currentSubaddressAccount(0)
+    , m_scheduler(this)
 {
     m_history = new TransactionHistory(m_walletImpl->history(), this);
     m_addressBook = new AddressBook(m_walletImpl->addressBook(), this);
@@ -908,6 +919,7 @@ Wallet::Wallet(Monero::Wallet *w, QObject *parent)
 Wallet::~Wallet()
 {
     qDebug("~Wallet: Closing wallet");
+    m_scheduler.shutdownWaitForFinished();
     delete m_addressBook;
     m_addressBook = NULL;
 
