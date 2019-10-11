@@ -133,7 +133,7 @@ Rectangle {
                     anchors.leftMargin: 192
                     font.bold: true
                     font.pixelSize: 12
-                    color: "#8d52b2"
+                    color: "#ffffff"
                 }
 
                 Text {
