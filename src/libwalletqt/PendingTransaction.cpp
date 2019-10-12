@@ -21,17 +21,23 @@ bool PendingTransaction::commit()
 
 double PendingTransaction::amount() const
 {
+    /*
+    xmc_int xmc_balance = m_pimpl->amount();
+    std::cout<<"XMC_INT PendingTransaction BALANCE:" << xmc_balance << std::endl;
+    double d_balance = xmc_int_to_double(xmc_balance);
+    std::cout<<"XMC Double PendingTransaction Balance:" << d_balance << std::endl;
+    */
     return xmc_int_to_double(m_pimpl->amount());
 }
 
-double PendingTransaction::dust() const
+quint64 PendingTransaction::dust() const
 {
-    return xmc_int_to_double(m_pimpl->dust());
+    return m_pimpl->dust();
 }
 
-double PendingTransaction::fee() const
+quint64 PendingTransaction::fee() const
 {
-    return xmc_int_to_double(m_pimpl->fee());
+    return m_pimpl->fee();
 }
 
 

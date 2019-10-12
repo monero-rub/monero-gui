@@ -682,16 +682,20 @@ ApplicationWindow {
             currentWallet.disposeTransaction(transaction);
         } else {
 	    console.log("******* TRANSACTION AMOUNT :"+ transaction.amount + ", ****** FEE:" + transaction.fee)
-            console.log("######## Transaction created, amount: " + walletManager.displayAmount(transaction.amount * 1000000000000.0)
-                    + ", fee: " + walletManager.displayAmount(transaction.fee/1000000000000.0));
+            //console.log("######## Transaction created, amount: " + walletManager.displayAmount(transaction.amount * 1000000000000.0)
+            //        + ", fee: " + walletManager.displayAmount(transaction.fee/1000000000000.0));
+            console.log("######## Transaction created, amount: " + transaction.amount
+                    + ", fee: " + walletManager.displayAmount(transaction.fee));
 
             // here we show confirmation popup;
             transactionConfirmationPopup.title = qsTr("Please confirm transaction:\n") + translationManager.emptyString;
             transactionConfirmationPopup.text = "";
             transactionConfirmationPopup.text += (address === "" ? "" : (qsTr("Address: ") + address));
             transactionConfirmationPopup.text += (paymentId === "" ? "" : (qsTr("\nPayment ID: ") + paymentId));
-            transactionConfirmationPopup.text +=  qsTr("\n\nAmount: ") + walletManager.displayAmount(transaction.amount);
-            transactionConfirmationPopup.text +=  qsTr("\nFee: ") + walletManager.displayAmount(transaction.fee);
+            transactionConfirmationPopup.text +=  qsTr("\n\nAmount: ") + transaction.amount;
+            //transactionConfirmationPopup.text +=  qsTr("\n\nAmount: ") + walletManager.displayAmount((transaction.amount * 1000000000000.0));
+            //transactionConfirmationPopup.text +=  qsTr("\nFee: ") + transaction.fee;
+            transactionConfirmationPopup.text +=  qsTr("\nFee: ") + walletManager.displayAmount((transaction.fee));
             transactionConfirmationPopup.text +=  qsTr("\nRingsize: ") + (mixinCount + 1);
             transactionConfirmationPopup.text +=  qsTr("\n\nNumber of transactions: ") + transaction.txCount
             transactionConfirmationPopup.text +=  (transactionDescription === "" ? "" : (qsTr("\nDescription: ") + transactionDescription))
@@ -798,14 +802,22 @@ ApplicationWindow {
             // deleting transaction object, we don't want memleaks
             currentWallet.disposeTransaction(transaction);
         } else {
-            console.log("Transaction created, amount: " + walletManager.displayAmount(transaction.amount*1000000000000.0)
-                    + ", fee: " + walletManager.displayAmount(transaction.fee/1000000000000.0));
+            console.log("Transaction created, amount: " + transaction.amount
+                    + ", fee: " + walletManager.displayAmount(transaction.fee));
+            //console.log("Transaction created, amount: " + walletManager.displayAmount(transaction.amount*1000000000000.0)
+            //        + ", fee: " + walletManager.displayAmount(transaction.fee/1000000000000.0));
 
             // here we show confirmation popup;
 
             transactionConfirmationPopup.title = qsTr("Confirmation") + translationManager.emptyString
+
+            //transactionConfirmationPopup.text  = qsTr("Please confirm transaction:\n")
+            //            + qsTr("\n\nAmount: ") + walletManager.displayAmount(transaction.amount)
+            //            + qsTr("\nFee: ") + walletManager.displayAmount(transaction.fee)
+            //            + translationManager.emptyString
+ 
             transactionConfirmationPopup.text  = qsTr("Please confirm transaction:\n")
-                        + qsTr("\n\nAmount: ") + walletManager.displayAmount(transaction.amount)
+                        + qsTr("\n\nAmount: ") + transaction.amount
                         + qsTr("\nFee: ") + walletManager.displayAmount(transaction.fee)
                         + translationManager.emptyString
             transactionConfirmationPopup.icon = StandardIcon.Question

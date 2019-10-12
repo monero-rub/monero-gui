@@ -429,6 +429,7 @@ void Wallet::createTransactionAsync(const QString &dst_addr, const QString &paym
             this, [this, watcher,dst_addr,payment_id,mixin_count]() {
         QFuture<PendingTransaction*> future = watcher->future();
         watcher->deleteLater();
+	qDebug() << "***#* createTransactionAsync: amount" << future.result()->amount() << ", fee:" << future.result()->fee();
         emit transactionCreated(future.result(),dst_addr,payment_id,mixin_count);
     });
     watcher->setFuture(future);
@@ -457,6 +458,8 @@ void Wallet::createTransactionAllAsync(const QString &dst_addr, const QString &p
             this, [this, watcher,dst_addr,payment_id,mixin_count]() {
         QFuture<PendingTransaction*> future = watcher->future();
         watcher->deleteLater();
+
+	qDebug() << "***##* createTransactionAllAsync: amount" << future.result()->amount() << ", fee:" << future.result()->fee();
         emit transactionCreated(future.result(),dst_addr,payment_id,mixin_count);
     });
     watcher->setFuture(future);
@@ -478,6 +481,8 @@ void Wallet::createSweepUnmixableTransactionAsync()
             this, [this, watcher]() {
         QFuture<PendingTransaction*> future = watcher->future();
         watcher->deleteLater();
+
+	qDebug() << "***###* createSweepUnmixableTransactionAsync: amount" << future.result()->amount() << ", fee:" << future.result()->fee();
         emit transactionCreated(future.result(),"","",0);
     });
     watcher->setFuture(future);

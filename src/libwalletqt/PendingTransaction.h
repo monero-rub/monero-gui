@@ -16,8 +16,8 @@ class PendingTransaction : public QObject
     Q_PROPERTY(Status status READ status)
     Q_PROPERTY(QString errorString READ errorString)
     Q_PROPERTY(double amount READ amount)
-    Q_PROPERTY(double dust READ dust)
-    Q_PROPERTY(double fee READ fee)
+    Q_PROPERTY(quint64 dust READ dust)
+    Q_PROPERTY(quint64 fee READ fee)
     Q_PROPERTY(QStringList txid READ txid)
     Q_PROPERTY(quint64 txCount READ txCount)
     Q_PROPERTY(QList<QVariant> subaddrIndices READ subaddrIndices)
@@ -42,8 +42,8 @@ public:
     QString errorString() const;
     Q_INVOKABLE bool commit();
     double amount() const;
-    double dust() const;
-    double fee() const;
+    quint64 dust() const;
+    quint64 fee() const;
     QStringList txid() const;
     quint64 txCount() const;
     QList<QVariant> subaddrIndices() const;
