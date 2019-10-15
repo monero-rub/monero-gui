@@ -8,12 +8,11 @@ typedef boost::multiprecision::cpp_int xmc_int;
 typedef boost::multiprecision::uint128_t xmc_uint_128;
 
 const xmc_float XMC_UINT = xmc_float(1000000000000.0);
-//const xmc_int XMC_INT_UINT = xmc_int(1000000000000);
 const xmc_uint_128 XMC_INT_MAX = xmc_uint_128((uint64_t)10000000000000000000ull);
 
 inline double xmc_int_to_double(xmc_int amount) {
         xmc_uint_128 amount_128 = amount.convert_to<xmc_uint_128>();
-        std::cout<<"uint128_t amount:" << amount_128 << std::endl;
+        //std::cout<<"uint128_t amount:" << amount_128 << std::endl;
 
 	if(amount_128 < XMC_INT_MAX)
 	{
