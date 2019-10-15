@@ -229,13 +229,16 @@ ListView {
                     anchors.left: parent.left
                     anchors.top: dateLabel.bottom
                     anchors.topMargin: 0
+		    //layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
                     font.family: MoneroComponents.Style.fontRegular.name
                     font.pixelSize: 16 * scaleRatio
                     text: {
                         if(isOut){
                             address = TxUtils.destinationsToAddress(destinations);
+			    console.log("Destination Address:" + address)
                             if(address){
                                 var truncated = TxUtils.addressTruncate(address);
+				console.log("Truncated destination Address:" + truncated);
                                 return qsTr("To ") + translationManager.emptyString + truncated;
                             } else {
                                 return "Unknown recipient";
