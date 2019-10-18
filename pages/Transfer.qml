@@ -53,6 +53,49 @@ Rectangle {
 
     Clipboard { id: clipboard }
 
+/*
+	Rectangle {
+		height: 34 * scaleRatio
+		width: 96 * scaleRatio
+		color: "transparent"
+		anchors.right: parent.right
+                anchors.bottom: parent.bottom
+
+            Image {
+                id: amtLogo
+                height: 29 * scaleRatio
+                width:  82 * scaleRatio
+                anchors.right: parent.right
+                anchors.bottom: parent.bottom
+                anchors.rightMargin: 4 * scaleRatio
+                anchors.bottomMargin: 4 * scaleRatio
+	    	source: "../images/amt-logo.png"
+		anchors.horizontalCenter: parent.horizontalCenter
+		anchors.verticalCenter: parent.verticalCenter
+            }
+	}
+*/
+
+	Rectangle {
+		height: 34 * scaleRatio
+		width: 96 * scaleRatio
+		color: "transparent"
+		anchors.right: parent.right
+                anchors.bottom: parent.bottom
+
+            Image {
+                id: amtLogo
+                height: 29 * scaleRatio
+                width:  82 * scaleRatio
+                anchors.right: parent.right
+                anchors.bottom: parent.bottom
+                anchors.rightMargin: 4 * scaleRatio
+                anchors.bottomMargin: 0
+	    	source: "../images/amt-logo.png"
+            }
+	}
+
+
     function oa_message(text) {
       oaPopup.title = qsTr("OpenAlias error") + translationManager.emptyString
       oaPopup.text = text
@@ -410,6 +453,7 @@ Rectangle {
               }
           }
       }
+
 
       function checkInformation(amount, address, payment_id, nettype) {
         address = address.trim()

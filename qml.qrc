@@ -272,6 +272,7 @@
         <file>images/local-node@2x.png</file>
         <file>images/local-node-full.png</file>
         <file>images/local-node-full@2x.png</file>
+        <file>images/amt-logo.png</file>
         <file>wizard/WizardNavProgressDot.qml</file>
         <file>wizard/WizardOpenWallet1.qml</file>
     </qresource>
