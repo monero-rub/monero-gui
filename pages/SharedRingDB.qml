@@ -255,16 +255,16 @@ Rectangle {
             onLinkActivated: {
                 sharedRingDBDialog.title  = qsTr("Rings") + translationManager.emptyString;
                 sharedRingDBDialog.text = qsTr(
-                    "In order to avoid nullifying the protection afforded by MoneroClassic's ring signatures, an output should not " +
+                    "In order to avoid nullifying the protection afforded by Monero-Classic's ring signatures, an output should not " +
                     "be spent with different rings on different blockchains. While this is normally not a concern, it can become one " +
-                    "when a key-reusing MoneroClassic clone allows you to spend existing outputs. In this case, you need to ensure this " +
+                    "when a key-reusing Monero-Classic clone allows you to spend existing outputs. In this case, you need to ensure this " +
                     "existing outputs uses the same ring on both chains.<br>" +
-                    "This will be done automatically by MoneroClassic and any key-reusing software which is not trying to actively strip " +
+                    "This will be done automatically by Monero-Classic and any key-reusing software which is not trying to actively strip " +
                     "you of your privacy.<br>" +
-                    "If you are using a key-reusing MoneroClassic clone too, and this clone does not include this protection, you can still " +
+                    "If you are using a key-reusing Monero-Classic clone too, and this clone does not include this protection, you can still " +
                     "ensure your transactions are protected by spending on the clone first, then manually adding the ring on this page, " +
                     "which allows you to then spend your XMC safely.<br>" +
-                    "If you do not use a key-reusing MoneroClassic clone without these safety features, then you do not need to do anything " +
+                    "If you do not use a key-reusing Monero-Classic clone without these safety features, then you do not need to do anything " +
                     "as it is all automated.<br>"
                 )
                 sharedRingDBDialog.icon = StandardIcon.Information
@@ -276,7 +276,7 @@ Rectangle {
             textFormat: Text.RichText
             font.family: MoneroComponents.Style.fontRegular.name
             font.pixelSize: 14 * scaleRatio
-            text: qsTr("This records rings used by outputs spent on MoneroClassic on a key reusing chain, so that the same ring may be reused to avoid privacy issues.") + translationManager.emptyString
+            text: qsTr("This records rings used by outputs spent on Monero-Classic on a key reusing chain, so that the same ring may be reused to avoid privacy issues.") + translationManager.emptyString
             wrapMode: Text.Wrap
             Layout.fillWidth: true;
             color: MoneroComponents.Style.defaultFontColor

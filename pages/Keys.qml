@@ -59,7 +59,7 @@ Rectangle {
         Layout.fillWidth: true
 
         MoneroComponents.WarningBox {
-            text: qsTr("WARNING: Do not reuse your MoneroClassic keys on another fork, UNLESS this fork has key reuse mitigations built in. Doing so will harm your privacy.") + translationManager.emptyString;
+            text: qsTr("WARNING: Do not reuse your Monero-Classic keys on another fork, UNLESS this fork has key reuse mitigations built in. Doing so will harm your privacy.") + translationManager.emptyString;
         }
 
         //! Manage wallet
