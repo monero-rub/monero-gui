@@ -11,7 +11,7 @@
 #include "PendingTransaction.h" // we need to have an access to the PendingTransaction::Priority enum here;
 #include "UnsignedTransaction.h"
 #include "NetworkType.h"
-#include "xmc_int_to_double.hpp"
+#include "rub_int_to_double.hpp"
 #include "FutureScheduler.h"
 
 namespace Monero {

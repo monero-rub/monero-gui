@@ -864,7 +864,7 @@ ApplicationWindow {
                     txid_text += ", "
                 txid_text += txid[i]
             }
-            informationPopup.text  = (viewOnly)? qsTr("Transaction saved to file: %1").arg(path) : qsTr("Monero-Classic sent successfully: %1 transaction(s) ").arg(txid.length) + txid_text + translationManager.emptyString
+            informationPopup.text  = (viewOnly)? qsTr("Transaction saved to file: %1").arg(path) : qsTr("Monero-Rub sent successfully: %1 transaction(s) ").arg(txid.length) + txid_text + translationManager.emptyString
             informationPopup.icon  = StandardIcon.Information
             if (transactionDescription.length > 0) {
                 for (var i = 0; i < txid.length; ++i)
@@ -1366,7 +1366,7 @@ ApplicationWindow {
                 PropertyChanges { target: titleBar; basicButtonVisible: false }
                 PropertyChanges { target: titleBar; showMaximizeButton: true }
                 PropertyChanges { target: titleBar; visible: true }
-                PropertyChanges { target: titleBar; title: qsTr("Monero-Classic") + translationManager.emptyString }
+                PropertyChanges { target: titleBar; title: qsTr("Monero-Rub") + translationManager.emptyString }
             }, State {
                 name: "normal"
                 PropertyChanges { target: leftPanel; visible: (isMobile)? false : true }
@@ -1381,7 +1381,7 @@ ApplicationWindow {
 //                PropertyChanges { target: frameArea; blocked: true }
                 PropertyChanges { target: titleBar; visible: true }
 //                PropertyChanges { target: titleBar; y: 0 }
-                PropertyChanges { target: titleBar; title: qsTr("Monero-Classic") + translationManager.emptyString }
+                PropertyChanges { target: titleBar; title: qsTr("Monero-Rub") + translationManager.emptyString }
                 PropertyChanges { target: mobileHeader; visible: isMobile ? true : false }
             }
         ]

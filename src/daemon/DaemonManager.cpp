@@ -78,7 +78,7 @@ bool DaemonManager::start(const QString &flags, NetworkType::Type nettype, const
 
     arguments << "--max-concurrency" << QString::number(concurrency);
 
-    qDebug() << "starting moneroclassicd " + m_monerod;
+    qDebug() << "starting monerorubd " + m_monerod;
     qDebug() << "With command line arguments " << arguments;
 
     m_daemon = new QProcess();
@@ -177,9 +177,9 @@ bool DaemonManager::stopWatcher(NetworkType::Type nettype) const
             if(counter >= 5) {
                 qDebug() << "Killing it! ";
 #ifdef Q_OS_WIN
-                QProcess::execute("taskkill /F /IM moneroclassicd.exe");
+                QProcess::execute("taskkill /F /IM monerorubd.exe");
 #else
-                QProcess::execute("pkill moneroclassicd");
+                QProcess::execute("pkill monerorubd");
 #endif
             }
 
@@ -312,9 +312,9 @@ DaemonManager::DaemonManager(QObject *parent)
 
     // Platform depetent path to monerod
 #ifdef Q_OS_WIN
-    m_monerod = QApplication::applicationDirPath() + "/moneroclassicd.exe";
+    m_monerod = QApplication::applicationDirPath() + "/monerorubd.exe";
 #elif defined(Q_OS_UNIX)
-    m_monerod = QApplication::applicationDirPath() + "/moneroclassicd";
+    m_monerod = QApplication::applicationDirPath() + "/monerorubd";
 #endif
 
     if (m_monerod.length() == 0) {

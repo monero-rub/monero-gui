@@ -9,9 +9,9 @@ AppName=Monero GUI Wallet
 ; With a different "AppName" InnoSetup would treat a mere update as a completely new application and thus mess up
 
 AppVersion=0.14.0.0
-DefaultDirName={pf}\MoneroClassic GUI Wallet
-DefaultGroupName=MoneroClassic GUI Wallet
-UninstallDisplayIcon={app}\moneroclassic-wallet-gui.exe
+DefaultDirName={pf}\MoneroRub GUI Wallet
+DefaultGroupName=MoneroRub GUI Wallet
+UninstallDisplayIcon={app}\monerorub-wallet-gui.exe
 PrivilegesRequired=admin
 ArchitecturesInstallIn64BitMode=x64
 ArchitecturesAllowed=x64
@@ -19,7 +19,7 @@ WizardSmallImageFile=WizardSmallImage.bmp
 WizardImageFile=WelcomeImage.bmp
 DisableWelcomePage=no
 LicenseFile=LICENSE
-AppPublisher=The MoneroClassic Developer Community
+AppPublisher=The MoneroRub Developer Community
 AppPublisherURL=https://getmonero.org
 
 UsedUserAreasWarning=no
@@ -67,36 +67,36 @@ Source: "ReadMe.htm"; DestDir: "{app}"; Flags: ignoreversion
 Source: "FinishImage.bmp"; Flags: dontcopy
 
 ; Monero GUI wallet exe and guide
-Source: "bin\moneroclassic-wallet-gui.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "bin\moneroclassic-GUI-guide.pdf"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\monerorub-wallet-gui.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\monerorub-GUI-guide.pdf"; DestDir: "{app}"; Flags: ignoreversion
 
 ; Monero GUI wallet log file
 ; The GUI wallet does not have the "--log-file" command-line option of the CLI wallet and insists to put the .log beside the .exe
 ; so pre-create the file and give the necessary permissions to the wallet to write into it
 ; Flag is "onlyifdoesntexist": We do not want to overwrite an already existing log
-Source: "moneroclassic-wallet-gui.log"; DestDir: "{app}"; Flags: onlyifdoesntexist; Permissions: users-modify
+Source: "monerorub-wallet-gui.log"; DestDir: "{app}"; Flags: onlyifdoesntexist; Permissions: users-modify
 
 ; Monero CLI wallet
-Source: "bin\moneroclassic-wallet-cli.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "bin\moneroclassic-gen-trusted-multisig.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\monerorub-wallet-cli.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\monerorub-gen-trusted-multisig.exe"; DestDir: "{app}"; Flags: ignoreversion
 
 ; Monero wallet RPC interface implementation
-Source: "bin\moneroclassic-wallet-rpc.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\monerorub-wallet-rpc.exe"; DestDir: "{app}"; Flags: ignoreversion
 
 ; Monero daemon
-Source: "bin\moneroclassicd.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\monerorubd.exe"; DestDir: "{app}"; Flags: ignoreversion
 
 ; Monero daemon wrapped in a batch file that stops before the text window closes, to see any error messages
-Source: "moneroclassic-daemon.bat"; DestDir: "{app}"; Flags: ignoreversion;
+Source: "monerorub-daemon.bat"; DestDir: "{app}"; Flags: ignoreversion;
 
 ; Monero blockchain utilities
-Source: "bin\moneroclassic-blockchain-export.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "bin\moneroclassic-blockchain-import.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "bin\moneroclassic-blockchain-mark-spent-outputs.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "bin\moneroclassic-blockchain-usage.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "bin\moneroclassic-blockchain-import.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "bin\moneroclassic-blockchain-ancestry.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "bin\moneroclassic-blockchain-depth.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\monerorub-blockchain-export.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\monerorub-blockchain-import.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\monerorub-blockchain-mark-spent-outputs.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\monerorub-blockchain-usage.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\monerorub-blockchain-import.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\monerorub-blockchain-ancestry.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\monerorub-blockchain-depth.exe"; DestDir: "{app}"; Flags: ignoreversion
 
 ; was present in 0.10.3.1, not present anymore in 0.11.1.0 and after
 ; Source: "bin\monero-utils-deserialize.exe"; DestDir: "{app}"; Flags: ignoreversion
@@ -260,7 +260,7 @@ Name: desktopicon; Description: "Create a &desktop icon"; GroupDescription: "Add
 Filename: "{app}\ReadMe.htm"; Description: "Show ReadMe"; Flags: postinstall shellexec skipifsilent
 
 ; DON'T offer to run the wallet right away, let the people read about initial blockchain download first in the ReadMe
-; Filename: "{app}\moneroclassic-wallet-gui.exe"; Description: "Run GUI Wallet now"; Flags: postinstall nowait skipifsilent
+; Filename: "{app}\monerorub-wallet-gui.exe"; Description: "Run GUI Wallet now"; Flags: postinstall nowait skipifsilent
 
 
 [Code]
@@ -379,7 +379,7 @@ function WalletFlags(Param: String): String;
 // created there because of an unsolved issue in the 0.13.0.4 wallet code
 var s: String;
 begin
-  s := ExpandConstant('{app}\moneroclassic-wallet-gui.log');
+  s := ExpandConstant('{app}\monerorub-wallet-gui.log');
   if Pos(' ', s) > 0 then begin
     // Quotes needed for filename with blanks
     s := '"' + s + '"';
@@ -415,8 +415,8 @@ end;
 [Icons]
 ; Icons in the "Monero GUI Wallet" program group
 ; Windows will almost always display icons in alphabetical order, per level, so specify the text accordingly
-Name: "{group}\GUI Wallet"; Filename: "{app}\moneroclassic-wallet-gui.exe"; Parameters: {code:WalletFlags}
-Name: "{group}\GUI Wallet Guide"; Filename: "{app}\moneroclassic-GUI-guide.pdf"; IconFilename: "{app}\moneroclassic-wallet-gui.exe"
+Name: "{group}\GUI Wallet"; Filename: "{app}\monerorub-wallet-gui.exe"; Parameters: {code:WalletFlags}
+Name: "{group}\GUI Wallet Guide"; Filename: "{app}\monerorub-GUI-guide.pdf"; IconFilename: "{app}\monerorub-wallet-gui.exe"
 Name: "{group}\Uninstall GUI Wallet"; Filename: "{uninstallexe}"
 
 ; Sub-folder "Utilities";
@@ -435,13 +435,13 @@ Name: "{group}\Utilities\Textual (CLI) Wallet"; Filename: "{app}\monero-wallet-c
 Name: "{group}\Utilities\x (Check Blockchain Folder)"; Filename: "{win}\Explorer.exe"; Parameters: {code:BlockChainDir}
 Name: "{group}\Utilities\x (Check Daemon Log)"; Filename: "Notepad"; Parameters: {code:DaemonLog}
 Name: "{group}\Utilities\x (Check Default Wallet Folder)"; Filename: "{win}\Explorer.exe"; Parameters: "{userdocs}\Monero\wallets"
-Name: "{group}\Utilities\x (Check GUI Wallet Log)"; Filename: "Notepad"; Parameters: "{app}\moneroclassic-wallet-gui.log"
+Name: "{group}\Utilities\x (Check GUI Wallet Log)"; Filename: "Notepad"; Parameters: "{app}\monerorub-wallet-gui.log"
 Name: "{group}\Utilities\x (Try Daemon, Exit Confirm)"; Filename: "{app}\monero-daemon.bat"
 Name: "{group}\Utilities\x (Try GUI Wallet Low Graphics Mode)"; Filename: "{app}\start-low-graphics-mode.bat"
 Name: "{group}\Utilities\x (Try Kill Daemon)"; Filename: "Taskkill.exe"; Parameters: "/IM monerod.exe /T /F"
 
 ; Desktop icons, optional with the help of the "Task" section
-Name: "{commondesktop}\GUI Wallet"; Filename: "{app}\moneroclassic-wallet-gui.exe"; Parameters: {code:WalletFlags}; Tasks: desktopicon
+Name: "{commondesktop}\GUI Wallet"; Filename: "{app}\monerorub-wallet-gui.exe"; Parameters: {code:WalletFlags}; Tasks: desktopicon
 
 
 [Registry]

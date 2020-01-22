@@ -4,12 +4,12 @@ Copyright (c) 2014-2018, The Monero Project
 
 ## Development resources
 
-- Web: [monero-classic.org](https://www.monero-classic.org)
-- Forum: [monero-classic.org](https://www.monero-classic.org)
-- Github: [https://github.com/monero-classic/monero-gui](https://github.com/monero-classic/monero-gui)
+- Web: [monero-rub.org](https://www.monero-rub.org)
+- Forum: [monero-rub.org](https://www.monero-rub.org)
+- Github: [https://github.com/monero-rub/monero-gui](https://github.com/monero-rub/monero-gui)
 ## Vulnerability response
 
-- Our [Vulnerability Response Process](https://github.com/monero-classic/meta/blob/master/VULNERABILITY_RESPONSE_PROCESS.md) encourages responsible disclosure
+- Our [Vulnerability Response Process](https://github.com/monero-rub/meta/blob/master/VULNERABILITY_RESPONSE_PROCESS.md) encourages responsible disclosure
 - We are also available via [HackerOne](https://hackerone.com/monero)
 
 ## Introduction
@@ -24,7 +24,7 @@ Monero is a private, secure, untraceable, decentralised digital currency. You ar
 
 ## About this project
 
-This is the GUI for the [core Monero Classic implementation](https://github.com/monero-classic/monero). It is open source and completely free to use without restrictions, except for those specified in the license agreement below. There are no restrictions on anyone creating an alternative implementation of Monero that uses the protocol and network in a compatible manner.
+This is the GUI for the [core Monero Rub implementation](https://github.com/monero-rub/monero). It is open source and completely free to use without restrictions, except for those specified in the license agreement below. There are no restrictions on anyone creating an alternative implementation of Monero that uses the protocol and network in a compatible manner.
 
 As with many development projects, the repository on Github is considered to be the "staging" area for the latest changes. Before changes are merged into that branch on the main repository, they are tested by individual developers in their own branches, submitted as a pull request, and then subsequently tested by contributors who focus on testing and code reviews. That having been said, the repository should be carefully considered before using it in a production environment, unless there is a patch in the repository for a particular show-stopping issue you are experiencing. It is generally a better idea to use a tagged release for stability.
 
@@ -102,7 +102,7 @@ Packaging for your favorite distribution would be a welcome contribution!
 
 3. Clone repository
 
-    `git clone https://github.com/monero-classic/monero-gui.git`
+    `git clone https://github.com/monero-rub/monero-gui.git`
 
 4. Build
 
@@ -119,7 +119,7 @@ The executable can be found in the build/release/bin folder.
 
 2. Install [homebrew](http://brew.sh/)
 
-3. Install [monero](https://github.com/monero-classic/monero) dependencies:
+3. Install [monero](https://github.com/monero-rub/monero) dependencies:
 
   `brew install boost --c++11`
 
@@ -149,7 +149,7 @@ The executable can be found in the build/release/bin folder.
 
 6. Grab an up-to-date copy of the monero-gui repository
 
-  `git clone https://github.com/monero-classic/monero-gui.git`
+  `git clone https://github.com/monero-rub/monero-gui.git`
 
 7. Go into the repository
 
@@ -207,7 +207,7 @@ The Monero GUI on Windows is 64 bits only; 32-bit Windows GUI builds are not off
 6. Clone repository
 
     ```
-    git clone https://github.com/monero-classic/monero-gui.git
+    git clone https://github.com/monero-rub/monero-gui.git
     ```
 
 7. Build

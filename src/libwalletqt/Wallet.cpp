@@ -263,26 +263,26 @@ bool Wallet::viewOnly() const
 
 double Wallet::balance(quint32 accountIndex) const
 {
-    //return xmc_int_to_double(m_walletImpl->balance(accountIndex));
+    //return rub_int_to_double(m_walletImpl->balance(accountIndex));
     return boost::numeric_cast<double>(m_walletImpl->balance(accountIndex));
 }
 
 double Wallet::balanceAll() const
 {
     return boost::numeric_cast<double>(m_walletImpl->balanceAll());
-    //return xmc_int_to_double(m_walletImpl->balanceAll());
+    //return rub_int_to_double(m_walletImpl->balanceAll());
 }
 
 double Wallet::unlockedBalance(quint32 accountIndex) const
 {
     return boost::numeric_cast<double>(m_walletImpl->unlockedBalance(accountIndex));
-    //return xmc_int_to_double(m_walletImpl->unlockedBalance(accountIndex));
+    //return rub_int_to_double(m_walletImpl->unlockedBalance(accountIndex));
 }
 
 double Wallet::unlockedBalanceAll() const
 {
     return boost::numeric_cast<double>(m_walletImpl->unlockedBalanceAll());
-    //return xmc_int_to_double(m_walletImpl->unlockedBalanceAll());
+    //return rub_int_to_double(m_walletImpl->unlockedBalanceAll());
 }
 
 quint32 Wallet::currentSubaddressAccount() const
@@ -773,7 +773,7 @@ void Wallet::setWalletCreationHeight(quint64 height)
 
 QString Wallet::getDaemonLogPath() const
 {
-    return QString::fromStdString(m_walletImpl->getDefaultDataDir()) + "/bitmoneroclassic.log";
+    return QString::fromStdString(m_walletImpl->getDefaultDataDir()) + "/bitmonerorub.log";
 }
 
 bool Wallet::blackballOutput(const QString &amount, const QString &offset)

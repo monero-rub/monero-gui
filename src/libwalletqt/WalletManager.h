@@ -101,10 +101,10 @@ public:
 
     //! since we can't call static method from QML, move it to this class
     Q_INVOKABLE QString displayAmount(quint64 amount) const;
-    //Q_INVOKABLE QString displayAmount(xmc_int amount) const;
+    //Q_INVOKABLE QString displayAmount(rub_int amount) const;
     Q_INVOKABLE quint64 amountFromString(const QString &amount) const;
     Q_INVOKABLE quint64 amountFromDouble(double amount) const;
-    //Q_INVOKABLE xmc_int maximumAllowedAmount() const;
+    //Q_INVOKABLE rub_int maximumAllowedAmount() const;
     Q_INVOKABLE quint64 maximumAllowedAmount() const;
 
     // QML JS engine doesn't support unsigned integers

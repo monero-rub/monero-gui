@@ -1,5 +1,5 @@
 #include "PendingTransaction.h"
-#include "xmc_int_to_double.hpp"
+#include "rub_int_to_double.hpp"
 
 PendingTransaction::Status PendingTransaction::status() const
 {
@@ -22,12 +22,12 @@ bool PendingTransaction::commit()
 double PendingTransaction::amount() const
 {
     /*
-    xmc_int xmc_balance = m_pimpl->amount();
-    std::cout<<"XMC_INT PendingTransaction BALANCE:" << xmc_balance << std::endl;
-    double d_balance = xmc_int_to_double(xmc_balance);
-    std::cout<<"XMC Double PendingTransaction Balance:" << d_balance << std::endl;
+    rub_int rub_balance = m_pimpl->amount();
+    std::cout<<"RUB_INT PendingTransaction BALANCE:" << rub_balance << std::endl;
+    double d_balance = rub_int_to_double(rub_balance);
+    std::cout<<"RUB Double PendingTransaction Balance:" << d_balance << std::endl;
     */
-    return xmc_int_to_double(m_pimpl->amount());
+    return rub_int_to_double(m_pimpl->amount());
 }
 
 quint64 PendingTransaction::dust() const
